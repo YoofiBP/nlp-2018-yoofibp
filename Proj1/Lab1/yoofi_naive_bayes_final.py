@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[ ]:
+
+
+##Yoofi Brown-Pobee
+
+
 # In[6]:
 
 
@@ -20,22 +26,27 @@ os.getcwd()
 # In[8]:
 
 
-arr = ['amazon_cells_labelled_training.txt','imdb_labelled_training.txt', 'yelp_labelled.txt']
 test = 'IMDB.txt'
 
 
 # In[9]:
 
 
-def naiveBayes(test_file,array_of_training_files):
+def naiveBayes(test_file):
+    array_of_training_files = ['amazon_cells_labelled_training.txt','imdb_labelled_training.txt', 'yelp_labelled.txt']
+    positiveDocs = []
+    negativeDocs = []
+    NeuVoc = []
+    NegVoc = []
+    PosVoc = []
+    posloglike = {}
+    negloglike = {}
     for b in array_of_training_files:
         totalfile = open(b)
         whole = totalfile.read()
         whole = whole.translate(None, string.punctuation)
         whole = whole.replace('\t', ' ')
         wholelist = whole.split('\n')
-        positiveDocs = []
-        negativeDocs = []
         wholelist.pop()
         wholelist.pop()
         wholelist
@@ -50,19 +61,14 @@ def naiveBayes(test_file,array_of_training_files):
         numberOfNegative = float(len(negativeDocs))
         posppc = numberOfPositive/numberOfDocuments
         negppc = numberOfNegative/numberOfDocuments
-        NeuVoc = []
-        NegVoc = []
-        PosVoc = []
         for i in wholelist:
             for i in i.split(' '):
                 if(i!='1' and i!='0'):
                     NeuVoc.append(i.lower())
-        NegVoc = []
         for i in negativeDocs:
             for i in i.split(' '):
                 if(i!='1' and i!='0'):
                     NegVoc.append(i.lower())
-        PosVoc = []
         for i in positiveDocs:
             for i in i.split(' '):
                 if(i!='1' and i!='0'):
@@ -72,7 +78,7 @@ def naiveBayes(test_file,array_of_training_files):
         VocBag = dict([i, NeuVoc.count(i)]for i in NeuVoc)
         del VocBag['']
         del NegBag['']
-        posloglike = {}
+        
         denom = sum(PosBag.values()) + len(VocBag)
         for key in VocBag:
             if(key in PosBag):
@@ -81,7 +87,7 @@ def naiveBayes(test_file,array_of_training_files):
                 poscount = 1
             ##print(key + " " + str(poscount))
             posloglike[key] = float(poscount)/float(denom)
-        negloglike = {}
+        
         denom = sum(NegBag.values()) + len(VocBag)
         for key in VocBag:
             if(key in NegBag):
@@ -100,7 +106,7 @@ def naiveBayes(test_file,array_of_training_files):
     alllist = alldata.split('\n')
     alllist
     alllist.pop()
-    newfile = open('results.txt','w')
+    newfile = open('results_file.txt','w')
     sentencenegprobs = {}
     sentenceposprobs = {}
     for i in alllist:
@@ -127,5 +133,5 @@ def naiveBayes(test_file,array_of_training_files):
 # In[10]:
 
 
-naiveBayes(test,arr)
+naiveBayes(test)
 
