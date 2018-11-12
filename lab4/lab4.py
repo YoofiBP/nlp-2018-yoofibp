@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[81]:
+# In[104]:
 
 
 import nltk
@@ -16,17 +16,18 @@ from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.linear_model import LogisticRegression
 import time
 import string
+from sklearn.feature_extraction.text import TfidfTransformer
 import os
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 
-# In[74]:
+# In[145]:
 
 
 def sentiment_analyzer(classifier, norm, textfile):
-    X, Y = datasplitter(textfile)
+    X, Y = datasplitter('amazon_cells_labelled_training.txt')
     
     '''Based on whether it is normalised or the vectorizer converts
     the text into a matrix of token(word) counts. Each word in
@@ -36,19 +37,27 @@ def sentiment_analyzer(classifier, norm, textfile):
     will be counted against the corpus X. The analyzer parameter
     will run the function stated on each entry before outputting tokens'''
     if(norm == "n"):
-        transformer = CountVectorizer(analyzer=normalize).fit(X)
+        transformer = CountVectorizer(analyzer=normalize)
+        
     else:
-        transformer = CountVectorizer(analyzer=splitup).fit(X)
+        transformer = CountVectorizer(analyzer=splitup)
         
     '''Tokenizing each word in X against the entire corpus'''
-    real_x = transformer.transform(X)
+    myfile = open(textfile)
+    myfile_data = myfile.read()
+    myfile_data = myfile_data.split('\n')
+    #myfile_data = splitup(myfile_data)
+    fitted= transformer.fit_transform(X)
+    real_x = transformer.transform(myfile_data)
+    real_f = TfidfTransformer()
+    tf_transform = real_f.fit_transform(fitted)
     
     '''Splitting our data into training and test data. X_train 
     contains part of reviews while y_train contains the their 
     corresponding sentiments. X_test is the test corpus with y_test
     its corresponding sentiments. The test_size parameter specifies
     the percentage of the entire corpus (real_x) to make testing data'''
-    X_train, X_test, y_train, y_test = train_test_split(real_x, Y, test_size=0.3, random_state=101)
+    X_train, X_test, y_train, y_test = train_test_split(fitted, Y, test_size=0.3, random_state=101)
     
     '''A Multinomial Naive Bayes (MultinomialNB) is used as it is a 
     version of Naive Bayes designed more for text documents.
@@ -68,17 +77,17 @@ def sentiment_analyzer(classifier, norm, textfile):
     
     '''Predicting the class of test data having been learned
     with training data'''
-    pred = class_type.predict(X_test)
+    pred = class_type.predict(real_x)
     
     '''Writing results to a text file'''
     newfile = open('results-'+classifier+'-'+norm+'.txt','w')
     for i in pred:
         newfile.write(i+'\n')
     newfile.close()
-    result_breakdown(y_test,pred)
+    #result_breakdown(y_test,pred)
 
 
-# In[75]:
+# In[146]:
 
 
 def datasplitter(textfile):
@@ -115,7 +124,7 @@ def datasplitter(textfile):
     return reviews, pos_neg
 
 
-# In[76]:
+# In[147]:
 
 
 '''Function to normalize text by removing stopwords: common 
@@ -127,7 +136,7 @@ def normalize(text):
     return [word.lower() for word in nopunc.split() if word.lower() not in stopwords.words('english')]
 
 
-# In[77]:
+# In[148]:
 
 
 '''Function to just split up into words and do nothing more'''
@@ -137,7 +146,7 @@ def splitup(text):
     return nopunc.split()
 
 
-# In[83]:
+# In[149]:
 
 
 '''Function to print out the summary of the precision, recall
@@ -148,8 +157,20 @@ def result_breakdown(y_test, classifier):
     print(classification_report(y_test, classifier))
 
 
-# In[67]:
+# In[138]:
 
 
 sentiment_analyzer(sys.argv[1],sys.argv[2],sys.argv[3])
+
+
+# In[150]:
+
+
+sentiment_analyzer("lr", "u", "test_sentences.txt")
+
+
+# In[ ]:
+
+
+
 
