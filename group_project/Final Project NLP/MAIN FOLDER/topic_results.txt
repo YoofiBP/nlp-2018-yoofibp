@@ -1,0 +1,43 @@
+Topic Modelling using Logistic Regression 
+25.	History and facts about Ghana
+ 
+26.	History and facts about Ghana
+ 
+27.	History and facts about Ghana
+ 
+Topic Modelling using Naive Bayes 
+History and facts about Ghana 
+History and facts about Ghana 
+History and facts about Ghana 
+Topic Modelling using Logistic Regression 
+25.	History and facts about Ghana
+ 
+26.	History and facts about Ghana
+ 
+27.	History and facts about Ghana
+ 
+Topic Modelling using LDA 
+100. United States of America
+ 
+kangaroo
+ 
+27.	History and facts about Ghana
+ 
+ -------------------> Topic Modelling using Naive Bayes 
+ <--------------------History and facts about Ghana 
+History and facts about Ghana 
+History and facts about Ghana 
+ ------------------> Topic Modelling using Logistic Regression <------------------------------ 
+25.	History and facts about Ghana
+ 
+26.	History and facts about Ghana
+ 
+27.	History and facts about Ghana
+ 
+ ----------------> Topic Modelling using LDA <------------------- 
+100. United States of America
+ 
+kangaroo
+ 
+27.	History and facts about Ghana
+ 

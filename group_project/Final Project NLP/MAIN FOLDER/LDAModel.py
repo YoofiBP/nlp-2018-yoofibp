@@ -87,8 +87,8 @@ def passTestFile(questionFile):
     vectorizerObj = dataframe_lda_Z[3]
     tr_dataset = open(questionFile,"r")
 
-    To = open("answers.txt","a")
-    To.write("Topic Modelling using LDA \n")
+    To = open("topic_results.txt","a")
+    To.write(" ----------------> Topic Modelling using LDA <------------------- \n")
 
     text_questions = []
 

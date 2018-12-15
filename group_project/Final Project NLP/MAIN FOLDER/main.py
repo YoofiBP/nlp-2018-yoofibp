@@ -3,6 +3,7 @@ import QR_Pairs
 import LogisticsRModel
 import NaiveBayesModel
 import LDAModelQuestionAndAnswer
+import LDAModel
 
 if __name__=="__main__":
     if sys.argv[1] == "qa":

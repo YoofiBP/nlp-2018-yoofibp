@@ -102,8 +102,8 @@ def train_and_testNB(features_array,features_test, classes,classifier,version):
     nb = MultinomialNB().fit(X_trainset,Y_trainset)
     #the predict() function is responsble for predicting the class values of the test file given
     predictionValue = nb.predict(features_test)
-    To = open("answers.txt","a")
-    To.write("Topic Modelling using Naive Bayes \n")
+    To = open("topic_results.txt","a")
+    To.write(" -------------------> Topic Modelling using Naive Bayes \n <--------------------")
     #To.write("Using Naive bayes \n")
     for i in predictionValue:
         To.write(topic_tags[i]+" \n")

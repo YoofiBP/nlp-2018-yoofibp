@@ -116,8 +116,8 @@ def MakePrediction(file):
     # print(logEv)
 
     logTest = TestClassifer(file,vector[4],vector[2],trainLRModel)
-    To = open("answers.txt","a")
-    To.write("Topic Modelling using Logistic Regression \n")
+    To = open("topic_results.txt","a")
+    To.write(" ------------------> Topic Modelling using Logistic Regression <------------------------------ \n")
     #To.write("Using Naive bayes \n")
     for i in logTest:
         To.write(i+" \n")

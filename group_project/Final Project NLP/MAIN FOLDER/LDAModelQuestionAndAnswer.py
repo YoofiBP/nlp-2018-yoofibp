@@ -7,7 +7,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer, TfidfTransformer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 from sklearn.model_selection import train_test_split
-
+from sklearn.metrics.pairwise import euclidean_distances
 
 # In[98]:
 
@@ -105,7 +105,7 @@ def passTestFile(questionFile):
     tr_dataset = open(questionFile,"r")
 
     text_questions = []
-    To = open("answers.txt","a")
+    To = open("qa_result.txt","w")
     line = tr_dataset.readline()
 
     while line:

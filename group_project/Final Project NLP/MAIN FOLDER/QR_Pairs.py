@@ -111,7 +111,7 @@ def ansques(question):
         if(i == ''):
             questions_raw.remove(i)
     print(questions_raw)
-    results = open('questions_file.txt','w')
+    results = open("qa_result.txt","w")
     for i in questions_raw:
         questions.append(i)
         results.write(qr_pairs[response(i,questions)] + '\n')
