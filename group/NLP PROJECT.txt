@@ -1,0 +1,22 @@
+LR/NMF - JOJOE
+NB/LDA - SASU
+NN/LSI - BENJ
+TESTING - KWAME
+WRITE-UP - YOOFI
+/Another idea
+
+- Explain what the method is
+- Why we are using it and How it solves the problem
+- What steps are we going to go through
+
+
+
+QUESTION ANSWERING
+
+- Rule-based
+- QR pairs
+- Cosine Similarity
+
+WTIRE-UP - JOJOE
+TESTING - SASU
+ 
