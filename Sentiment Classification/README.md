@@ -1,6 +1,5 @@
 # Sentiment Classification with Naive Bayes and Logisitic Regression
 For my Natural Language Processing class, I developed Naïve Bayes and Logistic Regression classifiers to predict whether a statement is positive or negative training data provided.
-library to build the classifiers. 
 
 There are two versions for each classifier – one that includes text normalization and one that does not.
 
