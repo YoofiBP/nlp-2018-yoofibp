@@ -17,12 +17,12 @@ For Question and Answering, Implementations used are:
 
 
 ## Team Members
-Emmanuel Jojoe Ainoo
+[Emmanuel Jojoe Ainoo](https://github.com/jojoe-ainoo)
 
-Kwame Boahene
+[Kwame Boahene](https://github.com/kwameboahene)
 
-David Sasu
+[David Sasu](https://github.com/sasudavid)
 
-Joseph Brown-Pobee
+Joseph Brown-Pobee (myself)
 
 Benjamin Kusi
